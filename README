@@ -1,0 +1,24 @@
+//amanda yun akyun@ucsc.edu 1903241 pa7
+
+
+Files Submitted:
+
+Makefile
+README
+
+Dictionary.cpp - Creates a new Node for each node in the tree. Each node has a key (string) and a value (int), with a parent node and children left and right. Parent, left and right nodes are initially set to nullptr and the key and value is set to its parameter input. 
+Dictionary constructor creates a new dictionary with num_pairs set to 0, root and current set to nil, which is set to a random node with a unique random string and a large value. 
+size() returns the number of pairs in the tree. size is incremented when setValue is called and sets a new node with a new key and value. 
+contains() allows the client to check if the key is already in the tree. this is called in search()
+getValue() and getKey() return the value and key of the current node. the current node can only be set by calling begin() or end() and using prev() and next() to move it around. begin() or end() must be called first.
+hasCurrent() returns true if the current has been set. If begin() or end() haven't been called then the current hasn't been set and hasCurrent() returns false. The value and key of the current can be called using currentVal() and currentKey()
+clear() deletes all the nodes and sets root and current back to nil and num_pairs to 0
+setValue() checks where the new node needs to be inserted and inserts it there, making sure to assign its parent and its children to the right nodes. 
+remove() uses its helper function transplant() to remove a given node of a given key. It first searches the list using search() to find where the node is and its parent and children nodes. If it isn't in the tree, then search() returns nil and an error is thrown. If not, then the current is set to nil. If the node doesn;t have a left child then you call transplant on its right child and vice versa. Make sure to delete the node that was transplanted (or removed) after calling transplant. Make sure to decrement num_pairs after each deletion.
+Much of the alogorithms for these functions were given by the professor. 
+
+Dictionary.h - given, added a couple helper functions
+
+DictionaryClient.cpp - tests all the functions in Dictionary.cpp
+
+Order.cpp - reads an input and adds that string as a key to the dictionary until every line has been reached. Keep track of the key's value by counting the line that it's on. call A.to_string() and A.pre_string()
